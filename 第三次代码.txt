@@ -1,0 +1,295 @@
+直方图绘制，均衡，匹配 主函数
+
+figure(1)
+[x1,map1]=imread('lena.bmp');
+lena=ind2gray(x1,map1);
+subplot(441);lenah=creath(lena);title('lena原图');
+
+[x2,map2]=imread('lena1.bmp');
+lena1=ind2gray(x2,map2);
+subplot(442);lean1h=creath(lena1);title('lena1');
+
+[x3,map3]=imread('lena2.bmp');
+lena2=ind2gray(x3,map3);
+subplot(443);lean2h=creath(lena2);title('lena2');
+
+[x4,map4]=imread('lena3.bmp');
+lena3=ind2gray(x4,map4);
+subplot(444);lean3h=creath(lena3);title('lena3');
+
+[x5,map5]=imread('elain.bmp');
+elain=ind2gray(x5,map5);
+subplot(445);elainh=creath(elain);title('elain原图');
+
+[x6,map6]=imread('elain1.bmp');
+elain1=ind2gray(x6,map6);
+subplot(446);elain1h=creath(elain1);title('elain1');
+
+[x7,map7]=imread('elain2.bmp');
+elain2=ind2gray(x7,map7);
+subplot(447);elain2h=creath(elain2);title('elain2');
+
+[x8,map8]=imread('elain3.bmp');
+elain3=ind2gray(x8,map8);
+subplot(448);elain3h=creath(elain3);title('elain3');
+
+[x9,map9]=imread('citywall.bmp');
+citywall=ind2gray(x9,map9);
+subplot(449);citywallh=creath(citywall);title('citywall原图');
+
+[x10,map10]=imread('citywall1.bmp');
+citywall1=ind2gray(x10,map10);
+subplot(4,4,10);citywall1h=creath(citywall1);title('citywall1');
+
+[x11,map11]=imread('citywall2.bmp');
+citywall2=ind2gray(x11,map11);
+subplot(4,4,11);citywall2h=creath(citywall2);title('elain3');
+
+[x12,map12]=imread('woman.bmp');
+woman=ind2gray(x12,map12);
+subplot(4,4,13);womanh=creath(woman);title('woman原图');
+
+[x13,map13]=imread('woman1.bmp');
+woman1=ind2gray(x13,map13);
+subplot(4,4,14);woman1h=creath(woman1);title('woman1');
+
+[x14,map14]=imread('woman2.bmp');
+woman2=ind2gray(x14,map14);
+subplot(4,4,15);woman2h=creath(woman2);title('woman2');
+
+%直方图均衡图像结果及均衡后的直方图
+%lena图像对比 
+figure(2)
+subplot(341);imshow(lena);title('原图');subplot(342);imshow(lena1);subplot(343);imshow(lena2);subplot(344);imshow(lena3);
+subplot(345);q1=HE(lena,lenah);title('直方图均衡结果');subplot(346);q2=HE(lena1,lean1h);subplot(347);q3=HE(lena2,lean2h);subplot(348);q4=HE(lena3,lean3h);
+subplot(349);creath(uint8(q1));title('均衡后直方图');subplot(3,4,10);creath(uint8(q2));subplot(3,4,11);creath(uint8(q3));subplot(3,4,12);creath(uint8(q4));
+
+%elain图像对比
+figure(3)
+subplot(341);imshow(elain);title('原图');subplot(342);imshow(elain1);subplot(343);imshow(elain2);subplot(344);imshow(elain3);
+subplot(345);q1=HE(elain,elainh);title('直方图均衡结果');subplot(346);q2=HE(elain1,elain1h);subplot(347);q3=HE(elain2,elain2h);subplot(348);q4=HE(elain3,elain3h);
+subplot(349);creath(uint8(q1));title('均衡后直方图');subplot(3,4,10);creath(uint8(q2));subplot(3,4,11);creath(uint8(q3));subplot(3,4,12);creath(uint8(q4));
+
+%citywall图像对比
+figure(4)
+subplot(331);imshow(citywall);title('原图');subplot(332);imshow(citywall1);subplot(333);imshow(citywall2);
+subplot(334);q11=HE(citywall,citywallh);title('直方图均衡结果');subplot(335);q12=HE(citywall1,citywall1h);subplot(336);q13=HE(citywall2,citywall2h);
+subplot(337);creath(uint8(q11));title('均衡后直方图');subplot(3,3,8);creath(uint8(q12));subplot(3,3,9);creath(uint8(q13));
+
+%citywall图像对比
+figure(5)
+subplot(331);imshow(woman);title('原图');subplot(332);imshow(woman1);subplot(333);imshow(woman2);
+subplot(334);q11=HE(woman,womanh);title('直方图均衡结果');subplot(335);q12=HE(woman1,woman1h);subplot(336);q13=HE(woman2,woman2h);
+subplot(337);creath(uint8(q11));title('均衡后直方图');subplot(3,3,8);creath(uint8(q12));subplot(3,3,9);creath(uint8(q13));
+
+%把各图像向原图匹配
+%lena1,2,3分别像原图匹配
+figure(6)
+subplot(341);imshow(lena);title('原图');subplot(342);imshow(lena1);subplot(343);imshow(lena2);subplot(344);imshow(lena3);
+subplot(346);o1=match(lena1,lena);title('直方图匹配结果');subplot(347);o2=match(lena2,lena);subplot(348);o3=match(lena3,lena);
+subplot(349);creath(lena);subplot(3,4,10);creath(uint8(o1));title('匹配后的直方图');subplot(3,4,11);creath(uint8(o2));subplot(3,4,12);creath(uint8(o3));
+ 
+%elain1,2,3分别像原图匹配
+figure(7)
+subplot(341);imshow(elain);title('原图');subplot(342);imshow(elain1);subplot(343);imshow(elain2);subplot(344);imshow(elain3);
+subplot(346);o1=match(elain1,elain);title('直方图匹配结果');subplot(347);o2=match(elain2,elain);subplot(348);o3=match(elain3,elain);
+subplot(349);creath(lena);subplot(3,4,10);creath(uint8(o1));title('匹配后的直方图');subplot(3,4,11);creath(uint8(o2));subplot(3,4,12);creath(uint8(o3));
+
+%citywall 1,2分别像原图匹配
+figure(8)
+subplot(331);imshow(citywall);title('原图');subplot(332);imshow(citywall1);subplot(333);imshow(citywall2);
+subplot(335);o1=match(citywall1,citywall);title('直方图匹配结果');subplot(336);o2=match(citywall2,citywall);
+subplot(337);creath(citywall);subplot(338);creath(uint8(o1));title('匹配后的直方图');subplot(339);creath(uint8(o2));
+
+%woman 1,2分别像原图匹配
+figure(9)
+subplot(331);imshow(woman);title('原图');subplot(332);imshow(woman1);subplot(333);imshow(woman2);
+subplot(335);o1=match(woman1,woman);title('直方图匹配结果');subplot(336);o2=match(woman2,woman);
+subplot(337);creath(woman);subplot(338);creath(uint8(o1));title('匹配后的直方图');subplot(339);creath(uint8(o2));
+
+直方图绘制函数
+function [ n ] =creath( x )
+%计算图片中每个灰度级对应的像素数量
+%   矩阵从1开始256结束，所以像素值为0的像素个数为n(1)
+n=zeros(256,1);
+[M,N]=size(x);
+for i=1:M*N
+    r=x(i)+1;
+    n(r)=n(r)+1;
+end
+bar(0:255,n);
+xlim([0,255]); 
+end
+
+直方图均衡函数
+ function [ q ] =HE( x,yh )
+%histogram equalization直方图均衡
+%   x为图像矩阵，yh为直方图数组存储的是各灰度级像素数量
+[M,N]=size(x);
+MN=M*N;
+S=zeros(256,1);%存储原来第k级别灰度对应的转换后灰度
+for k=0:255
+    s=0;
+    for j=0:k
+        s=s+yh(j+1);
+    end
+    S(k+1)=round(255*s/MN);
+end
+q=zeros(M,N);
+for i=1:MN
+    p=x(i)+1;
+    q(i)=S(p);
+end
+imshow(uint8(q));
+end
+
+直方图匹配函数
+function [ o ] = match( x,y )
+%histogram match 直方图匹配
+%   x为要匹配的图像，y为拥有规定直方图的图像
+%   矩阵从1开始256结束，所以像素值为0的像素个数为n（1）
+n1=zeros(256,1);   %存储第i级灰度对应的像素个数
+[M1,N1]=size(x);
+for i=1:M1*N1
+    r=x(i)+1;
+    n1(r)=n1(r)+1;
+end
+n2=zeros(256,1);
+[M2,N2]=size(y);
+for i=1:M2*N2
+    r=y(i)+1;
+    n2(r)=n2(r)+1;
+end
+
+M1N1=M1*N1;
+s1=zeros(256,1);%存储原来第k级别灰度对应的转换后灰度,x
+M2N2=M2*N2;
+s2=zeros(256,1);%存储原来第k级别灰度对应的转换后灰度,y
+for k=0:255
+    s=0;
+    ss=0;
+    for j=0:k
+        s=s+n1(j+1); 
+        ss=ss+n2(j+1);
+    end
+    s1(k+1)=round(255*s/M1N1);
+    s2(k+1)=round(255*ss/M2N2);
+end
+%以上完成了两幅图像的直方图均衡，现在需要对均衡结果匹配，结果放在s3
+s3=zeros(256,1);
+for i=1:256
+    for j=1:256
+        if(s1(i)==s2(j))
+            s3(i)=j;
+            break;
+        elseif((s1(i)>s2(j))&&(s1(i)<s2(j+1)))
+            if((s1(i)-s2(j))<=(s2(j+1)-s1(i)))
+                s3(i)=j;
+                break;
+            else
+                s3(i)=j+1;
+                break;
+            end
+        end
+    end
+end
+
+o=zeros(M1,N1);
+for i=1:M1N1
+    p=x(i)+1;
+    o(i)=s3(p);
+end
+imshow(uint8(o));%绘制匹配后的图像
+end
+
+局部增强和图像分割主函数
+%利用local函数对图像进行直方图统计下的局部增强
+[x,map]=imread('lena3.bmp');
+lena=ind2gray(x,map);
+[x1,map1]=imread('elain2.bmp');
+elain=ind2gray(x1,map1);
+L=local(lena);
+E=local(elain);
+
+figure(1)
+subplot(121);imshow(lena);subplot(122);imshow(uint8(L));title('k0=0.8,k1=0.05,k2=0.7');
+
+figure(2)
+subplot(121);imshow(elain);subplot(122);imshow(uint8(E));title('k0=0.7,k1=0.25,k2=0.65');
+
+%对图像分割
+
+[x2,map2]=imread('lena.bmp');
+lena=ind2gray(x2,map2);
+[x3,map3]=imread('woman.bmp');
+woman=ind2gray(x3,map3);
+
+
+%观察直方图，woman阈值取：100   elain阈值取：130  
+figure(3)
+womant=thresh(woman,100);
+imshow(womant);title('阈值100');
+figure(4)
+elaint=thresh(elain,130);
+imshow(elaint);title('阈值130');
+
+局部增强函数
+function [L] = local( P )
+%7*7的局部直方图处理
+%   利用全局均值u和全局方差c作为分割处理的基础
+%计算均值和方差
+p=double(P);
+u=mean2(p);%全局均值
+c=var(p(:));%全局方差
+[M,N]=size(p);
+a=zeros(M+6,N+6);%先补全矩阵，用于模板处理
+L=zeros(M,N);%存放处理结果
+for i=1:M
+    for j=1:N
+        a(i+3,j+3)=p(i,j);
+    end
+end
+%对补全后的矩阵进行处理
+A=zeros(7,7);%存放模板对应的矩阵值
+for i=4:M+3
+    for j=4:N+3
+        k=1;
+        for I=i-3:i+3    %计算7*7模板的均值和方差
+            for J=j-3:j+3;
+                A(k)=a(I,J);
+                k=k+1;
+            end
+        end
+        u1=mean2(A);%局部均值
+        c1=var(A(:));%局部方差
+        if((u1<0.8*u)&&(c1>0.05*c)&&(c1<0.7*c))% k0=0.8，k1=0.05，k2=0.7
+            L(i-3,j-3)=4*a(i,j);
+        else
+            L(i-3,j-3)=a(i,j);
+        end
+    end
+end
+end
+
+阈值分割函数
+function [ k ] = thresh( I,t )
+%UNTITLED5 此处显示有关此函数的摘要
+%   此处显示详细说明
+ % 设全局阈值为t
+[M, N] = size(I); 
+K=zeros(M,N);
+for i = 1 : M
+   for j = 1 : N
+      if ( I(i, j) > t)
+          K(i, j) = 255;
+      else
+          K(i, j) = 0; 
+      end
+   end
+end
+k=uint8(K);
+end
+
+
+
+
